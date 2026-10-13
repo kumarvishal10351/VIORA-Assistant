@@ -30,19 +30,19 @@ const PROMPTS = [
 
 export default function SuggestedPrompts({ onSelectPrompt }) {
   return (
-    <div className="w-full max-w-2xl mx-auto my-4">
+    <div className="w-full max-w-2xl mx-auto my-2 sm:my-4 px-1">
       <div className="text-[11px] font-medium text-[#8b938e] uppercase tracking-wider mb-2 text-center sm:text-left">
         Suggested questions
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
         {PROMPTS.map((item, idx) => {
           const Icon = item.icon;
           return (
             <button
               key={idx}
               onClick={() => onSelectPrompt(item.prompt)}
-              className="group text-left p-3.5 rounded-lg bg-white border border-[#e8e6e1] hover:border-[#124332]/40 hover:shadow-sm transition-all duration-150 cursor-pointer flex items-start gap-3"
+              className="group text-left p-3 sm:p-3.5 rounded-lg bg-white border border-[#e8e6e1] hover:border-[#124332]/40 hover:shadow-sm active:bg-[#f5f4f0] transition-all duration-150 cursor-pointer flex items-start gap-2.5 sm:gap-3"
               type="button"
             >
               <div className="p-1.5 rounded-md bg-[#f5f4f0] text-[#124332] group-hover:bg-[#124332] group-hover:text-white transition-colors flex-shrink-0 mt-0.5">
@@ -52,7 +52,7 @@ export default function SuggestedPrompts({ onSelectPrompt }) {
                 <div className="text-xs font-semibold text-[#191b1a] group-hover:text-[#124332] transition-colors">
                   {item.label}
                 </div>
-                <div className="text-[11px] text-[#5e6661] mt-0.5 line-clamp-1">
+                <div className="text-[11px] text-[#5e6661] mt-0.5 line-clamp-2 sm:line-clamp-1">
                   {item.desc}
                 </div>
               </div>

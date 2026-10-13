@@ -85,7 +85,7 @@ export default function ChatStream({
 
     const lines = text.split('\n');
     return (
-      <div className="space-y-2 leading-relaxed text-[0.9375rem] text-[#191b1a] font-sans">
+      <div className="space-y-2 leading-relaxed text-[0.875rem] sm:text-[0.9375rem] text-[#191b1a] font-sans">
         {lines.map((line, i) => {
           const trimmed = line.trim();
           if (!trimmed) {
@@ -136,7 +136,7 @@ export default function ChatStream({
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto flex flex-col gap-6 py-4">
+    <div className="w-full max-w-3xl mx-auto flex flex-col gap-4 sm:gap-6 py-2 sm:py-4">
       {messages.map((msg, idx) => {
         const isUser = msg.role === 'user';
 
@@ -144,7 +144,7 @@ export default function ChatStream({
           return (
             <div key={msg.id} className="flex justify-end animate-slide-up">
               {/* User Bubble with Translucent Glassmorphism */}
-              <div className="max-w-[85%] sm:max-w-[75%] rounded-2xl px-4 py-3 bg-[#f0eee9]/40 backdrop-blur-sm text-[#191b1a] text-sm leading-relaxed border border-[#e8e6e1]/50 shadow-2xs">
+              <div className="max-w-[90%] sm:max-w-[75%] rounded-2xl px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#f0eee9]/40 backdrop-blur-sm text-[#191b1a] text-sm leading-relaxed border border-[#e8e6e1]/50 shadow-2xs">
                 {msg.content}
               </div>
             </div>
@@ -170,7 +170,7 @@ export default function ChatStream({
 
         // Assistant Message
         return (
-          <div key={msg.id} className="flex flex-col gap-3 animate-slide-up">
+          <div key={msg.id} className="flex flex-col gap-2 sm:gap-3 animate-slide-up">
             {/* Assistant Header */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -181,22 +181,23 @@ export default function ChatStream({
 
                 {/* Fallback Model Pill Badge */}
                 {msg.is_fallback && (
-                  <span className="ml-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#eaf3ee] text-[#124332] border border-[#124332]/20 flex items-center gap-1 shadow-2xs">
-                    <Sparkles className="w-3 h-3 text-[#124332]" />
-                    <span>Fallback Model • Mistral Large</span>
+                  <span className="ml-1 sm:ml-1.5 px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-medium bg-[#eaf3ee] text-[#124332] border border-[#124332]/20 flex items-center gap-1 shadow-2xs">
+                    <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#124332]" />
+                    <span className="hidden sm:inline">Fallback Model • Mistral Large</span>
+                    <span className="sm:hidden">Fallback</span>
                   </span>
                 )}
               </div>
 
               {msg.latency && (
-                <span className="text-[11px] font-mono text-[#8b938e]">
+                <span className="text-[10px] sm:text-[11px] font-mono text-[#8b938e]">
                   {msg.latency}ms
                 </span>
               )}
             </div>
 
             {/* Answer Card with Translucent Glassmorphism */}
-            <div className="bg-white/35 backdrop-blur-sm rounded-xl p-5 border border-[#e8e6e1]/60 shadow-2xs transition-all">
+            <div className="bg-white/35 backdrop-blur-sm rounded-xl p-3.5 sm:p-5 border border-[#e8e6e1]/60 shadow-2xs transition-all">
               <TypewriterMessage
                 key={msg.id}
                 text={displayContent}
@@ -207,8 +208,8 @@ export default function ChatStream({
 
               {/* Fallback Callout: ONLY appears when Not-Found / Insufficient Evidence is Output */}
               {isTypingDone && hasInsufficientEvidence && !msg.is_fallback && (
-                <div className="mt-4 p-3.5 rounded-lg bg-white/60 backdrop-blur-sm border border-[#e8e6e1]/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in">
-                  <div className="flex items-start sm:items-center gap-2.5">
+                <div className="mt-3 sm:mt-4 p-3 sm:p-3.5 rounded-lg bg-white/60 backdrop-blur-sm border border-[#e8e6e1]/70 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 animate-fade-in">
+                  <div className="flex items-start sm:items-center gap-2 sm:gap-2.5">
                     <Sparkles className="w-4 h-4 text-[#124332] flex-shrink-0 mt-0.5 sm:mt-0" />
                     <div className="text-xs text-[#5e6661]">
                       <span className="font-semibold text-[#191b1a] block sm:inline">
@@ -220,7 +221,7 @@ export default function ChatStream({
                   <button
                     onClick={() => onTriggerFallback && onTriggerFallback(userQuery, msg.id)}
                     disabled={fallbackLoadingId === msg.id}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white bg-[#124332] hover:bg-[#195842] transition-all cursor-pointer shadow-xs disabled:opacity-50 flex-shrink-0"
+                    className="flex items-center justify-center gap-1.5 px-3 py-2 sm:py-1.5 rounded-md text-xs font-medium text-white bg-[#124332] hover:bg-[#195842] transition-all cursor-pointer shadow-xs disabled:opacity-50 flex-shrink-0 w-full sm:w-auto"
                     type="button"
                   >
                     {fallbackLoadingId === msg.id ? (
@@ -231,7 +232,8 @@ export default function ChatStream({
                     ) : (
                       <>
                         <Sparkles className="w-3.5 h-3.5" />
-                        <span>Consult Mistral Large (Fallback)</span>
+                        <span className="hidden sm:inline">Consult Mistral Large (Fallback)</span>
+                        <span className="sm:hidden">Consult Fallback Model</span>
                       </>
                     )}
                   </button>
@@ -240,12 +242,12 @@ export default function ChatStream({
 
               {/* Citations & Sources Section (Revealed once streaming completes) */}
               {isTypingDone && msg.sources && msg.sources.length > 0 && (
-                <div className="mt-5 pt-4 border-t border-[#f0eee9]/80 animate-fade-in">
-                  <div className="text-[11px] font-medium text-[#8b938e] uppercase tracking-wider mb-2.5">
+                <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-[#f0eee9]/80 animate-fade-in">
+                  <div className="text-[11px] font-medium text-[#8b938e] uppercase tracking-wider mb-2 sm:mb-2.5">
                     Sources Referenced ({msg.sources.length})
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2">
                     {msg.sources.map((src, sIdx) => {
                       const key = `${msg.id}-${sIdx}`;
                       const isExpanded = !!expandedSources[key];
@@ -256,7 +258,7 @@ export default function ChatStream({
                         <div key={sIdx} className="flex flex-col gap-1.5">
                           <button
                             onClick={() => toggleSourceExpand(msg.id, sIdx)}
-                            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border transition-colors cursor-pointer ${
+                            className={`flex items-center gap-1.5 px-2.5 py-1.5 sm:py-1 rounded-md text-xs font-medium border transition-colors cursor-pointer ${
                               isExpanded
                                 ? 'bg-[#eaf3ee] border-[#124332] text-[#124332]'
                                 : 'bg-[#faf9f6]/90 border-[#e8e6e1] text-[#5e6661] hover:border-[#124332]/40 hover:text-[#191b1a]'
@@ -264,7 +266,7 @@ export default function ChatStream({
                             type="button"
                           >
                             <FileText className="w-3 h-3 text-[#124332]" />
-                            <span className="truncate max-w-[180px]">{fileName}</span>
+                            <span className="truncate max-w-[200px] sm:max-w-[180px]">{fileName}</span>
                             {pageNum && (
                               <span className="text-[10px] opacity-75 font-mono">({pageNum})</span>
                             )}
@@ -273,16 +275,16 @@ export default function ChatStream({
 
                           {/* Excerpt Accordion */}
                           {isExpanded && src.preview && (
-                            <div className="p-3 bg-[#faf9f6]/95 backdrop-blur-sm rounded-md border border-[#e8e6e1] text-xs text-[#5e6661] leading-relaxed max-w-md animate-slide-up">
-                              <div className="font-medium text-[#191b1a] text-[11px] mb-1 flex items-center justify-between">
-                                <span>Excerpt from {fileName}</span>
+                            <div className="p-3 bg-[#faf9f6]/95 backdrop-blur-sm rounded-md border border-[#e8e6e1] text-xs text-[#5e6661] leading-relaxed max-w-full sm:max-w-md animate-slide-up">
+                              <div className="font-medium text-[#191b1a] text-[11px] mb-1 flex items-center justify-between gap-2">
+                                <span className="truncate">Excerpt from {fileName}</span>
                                 {src.score !== undefined && (
-                                  <span className="font-mono text-[10px] text-[#124332]">
+                                  <span className="font-mono text-[10px] text-[#124332] flex-shrink-0">
                                     Match: {Math.round(src.score * 100)}%
                                   </span>
                                 )}
                               </div>
-                              <p className="italic">"{src.preview.trim()}"</p>
+                              <p className="italic break-words">"{src.preview.trim()}"</p>
                             </div>
                           )}
                         </div>
@@ -294,10 +296,10 @@ export default function ChatStream({
 
               {/* Action Toolbar */}
               {isTypingDone && (
-                <div className="mt-4 pt-3 flex items-center justify-between border-t border-[#f0eee9]/80 animate-fade-in">
+                <div className="mt-3 sm:mt-4 pt-2 sm:pt-3 flex items-center justify-between border-t border-[#f0eee9]/80 animate-fade-in">
                   <button
                     onClick={() => handleCopy(msg.id, msg.content)}
-                    className="flex items-center gap-1.5 text-xs text-[#5e6661] hover:text-[#191b1a] transition-colors cursor-pointer py-1 px-1.5 rounded hover:bg-[#faf9f6]"
+                    className="flex items-center gap-1.5 text-xs text-[#5e6661] hover:text-[#191b1a] transition-colors cursor-pointer py-1.5 sm:py-1 px-1.5 rounded hover:bg-[#faf9f6]"
                     type="button"
                   >
                     {copiedId === msg.id ? (
@@ -321,7 +323,7 @@ export default function ChatStream({
 
       {/* Thinking / In-Flight Indicator with Translucent Glassmorphism */}
       {isLoading && (
-        <div className="flex flex-col gap-2.5 animate-slide-up">
+        <div className="flex flex-col gap-2 sm:gap-2.5 animate-slide-up">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-md bg-[#124332] text-white flex items-center justify-center">
               <BookOpen className="w-3.5 h-3.5" />
@@ -329,7 +331,7 @@ export default function ChatStream({
             <span className="text-xs font-semibold text-[#191b1a]">Viora</span>
           </div>
 
-          <div className="relative overflow-hidden bg-white/35 backdrop-blur-sm rounded-xl p-5 border border-[#e8e6e1]/60 shadow-2xs flex flex-col gap-3">
+          <div className="relative overflow-hidden bg-white/35 backdrop-blur-sm rounded-xl p-3.5 sm:p-5 border border-[#e8e6e1]/60 shadow-2xs flex flex-col gap-3">
             {/* Shimmer top accent */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#124332] to-transparent animate-pulse" />
 

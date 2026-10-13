@@ -60,8 +60,8 @@ export default function UploadModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl border border-[#e8e6e1] animate-slide-up">
+    <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-xs flex items-end sm:items-center justify-center sm:p-4">
+      <div className="bg-white rounded-t-2xl sm:rounded-2xl w-full sm:max-w-lg p-5 sm:p-6 shadow-xl border border-[#e8e6e1] animate-slide-up max-h-[85vh] overflow-y-auto safe-bottom">
         {/* Modal Header */}
         <div className="flex items-center justify-between pb-3 border-b border-[#f0eee9]">
           <div className="flex items-center gap-2">
@@ -72,10 +72,10 @@ export default function UploadModal({
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-md text-[#8b938e] hover:text-[#191b1a] hover:bg-[#f5f4f0] transition-colors cursor-pointer"
+            className="p-1.5 rounded-md text-[#8b938e] hover:text-[#191b1a] hover:bg-[#f5f4f0] active:bg-[#eceae4] transition-colors cursor-pointer"
             type="button"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5 sm:w-4 sm:h-4" />
           </button>
         </div>
 
@@ -91,10 +91,10 @@ export default function UploadModal({
 
           <div
             onClick={() => !isUploading && fileInputRef.current && fileInputRef.current.click()}
-            className={`border border-dashed rounded-xl p-6 text-center cursor-pointer transition-all ${
+            className={`border border-dashed rounded-xl p-5 sm:p-6 text-center cursor-pointer transition-all ${
               isUploading
                 ? 'border-[#124332] bg-[#f5fbf8]'
-                : 'border-[#dcd9d2] hover:border-[#124332] hover:bg-[#faf9f6]'
+                : 'border-[#dcd9d2] hover:border-[#124332] active:bg-[#f5fbf8] hover:bg-[#faf9f6]'
             }`}
           >
             {isUploading ? (
@@ -139,7 +139,7 @@ export default function UploadModal({
             {documents.length > 0 && onClearAll && (
               <button
                 onClick={onClearAll}
-                className="text-[11px] text-red-600 hover:text-red-700 hover:underline cursor-pointer"
+                className="text-[11px] text-red-600 hover:text-red-700 hover:underline cursor-pointer py-1 px-1"
                 type="button"
               >
                 Clear all
@@ -152,15 +152,15 @@ export default function UploadModal({
               documents.map((doc, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between p-2.5 rounded-lg bg-[#faf9f6] border border-[#f0eee9] text-xs text-[#191b1a]"
+                  className="flex items-center justify-between p-2.5 sm:p-2.5 rounded-lg bg-[#faf9f6] border border-[#f0eee9] text-xs text-[#191b1a]"
                 >
-                  <div className="flex items-center gap-2 min-w-0">
+                  <div className="flex items-center gap-2 min-w-0 flex-1">
                     <FileText className="w-3.5 h-3.5 text-[#124332] flex-shrink-0" />
                     <span className="truncate font-medium">{doc.name}</span>
                   </div>
-                  <div className="flex items-center gap-2 flex-shrink-0 ml-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 ml-2">
                     {doc.size && (
-                      <span className="text-[10px] font-mono text-[#8b938e]">{doc.size}</span>
+                      <span className="text-[10px] font-mono text-[#8b938e] hidden sm:inline">{doc.size}</span>
                     )}
                     <span className="inline-flex items-center text-[10px] text-[#124332] bg-[#eaf3ee] px-1.5 py-0.5 rounded font-medium">
                       <Check className="w-2.5 h-2.5 mr-0.5" /> Indexed
@@ -168,11 +168,11 @@ export default function UploadModal({
                     {onDeleteDocument && (
                       <button
                         onClick={() => onDeleteDocument(doc.name)}
-                        className="p-1 text-[#8b938e] hover:text-red-600 rounded transition-colors cursor-pointer"
+                        className="p-1.5 sm:p-1 text-[#8b938e] hover:text-red-600 rounded transition-colors cursor-pointer"
                         title={`Remove ${doc.name}`}
                         type="button"
                       >
-                        <Trash2 className="w-3 h-3" />
+                        <Trash2 className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
                       </button>
                     )}
                   </div>

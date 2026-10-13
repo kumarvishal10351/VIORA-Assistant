@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta name="theme-color" content="#faf9fb"/>
   <title>Viora — Grounded Research Workspace</title>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -138,7 +139,7 @@
   <!-- FIXED HEADER: Stitch Institutional Masthead & Navigation                  -->
   <!-- ========================================================================= -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30">
-    <div class="h-16 w-full px-content-margin flex items-center justify-between gap-space-lg">
+    <div class="h-14 w-full px-3 sm:px-content-margin flex items-center justify-between gap-space-sm sm:gap-space-lg">
       <div class="flex items-center gap-space-lg min-w-0 flex-shrink-0">
         <div class="flex items-baseline gap-space-sm">
           <span class="font-headline-md text-headline-md tracking-tight text-primary font-semibold">VIORA</span>
@@ -157,9 +158,9 @@
           <span class="material-symbols-outlined text-[15px]">verified</span>
           <span class="font-code-sm text-code-sm font-semibold tracking-tight">Calibrated Grounding: Active</span>
         </div>
-        <button id="openUploadBtn" class="flex items-center gap-space-xs px-space-md py-space-xs bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm" type="button">
+        <button id="openUploadBtn" class="flex items-center gap-space-xs px-space-sm sm:px-space-md py-space-xs bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm" type="button">
           <span class="material-symbols-outlined text-[16px]">attach_file</span>
-          <span>Attach Document</span>
+          <span class="hidden sm:inline">Attach Document</span>
         </button>
         <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 ml-space-xs text-on-primary">
           <span class="material-symbols-outlined text-[18px]">person</span>
@@ -171,10 +172,10 @@
   <!-- ========================================================================= -->
   <!-- MAIN CONTENT AREA                                                         -->
   <!-- ========================================================================= -->
-  <main class="w-full pt-16 bg-background flex-1 flex flex-col">
+  <main class="w-full pt-14 bg-background flex-1 flex flex-col">
 
     <!-- Telemetry Sub-Bar -->
-    <section class="w-full bg-surface-container-low px-content-margin py-space-sm shadow-sm border-b border-outline-variant/30">
+    <section class="w-full bg-surface-container-low px-3 sm:px-content-margin py-space-sm shadow-sm border-b border-outline-variant/30">
       <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-space-md text-on-surface-variant">
         <div class="flex flex-wrap items-center gap-space-xs font-code-sm text-code-sm">
           <div class="flex items-center gap-space-xs px-space-sm py-space-2xs bg-surface-container-lowest rounded-lg shadow-sm">
@@ -210,7 +211,7 @@
     </section>
 
     <!-- Main Canvas -->
-    <div class="w-full max-w-7xl mx-auto px-content-margin py-space-2xl flex flex-col gap-space-2xl flex-1">
+    <div class="w-full max-w-7xl mx-auto px-3 sm:px-content-margin py-space-xl sm:py-space-2xl flex flex-col gap-space-xl sm:gap-space-2xl flex-1">
 
       <!-- Hero / Welcome Greeting -->
       <section class="flex flex-col items-center text-center max-w-4xl mx-auto mb-space-md">
@@ -222,12 +223,12 @@
           <div class="flex items-center justify-center gap-space-lg w-full mt-space-xs">
             <div class="hidden md:block flex-1 h-[1px] bg-gradient-to-r from-transparent via-outline-variant/40 to-outline-variant/70"></div>
             <div class="flex flex-col items-center px-space-md">
-              <div class="font-headline-xl text-[42px] md:text-[56px] tracking-[0.28em] uppercase text-on-surface font-normal leading-none pl-[0.28em]">V I O R A</div>
+              <div class="font-headline-xl text-[32px] sm:text-[42px] md:text-[56px] tracking-[0.20em] sm:tracking-[0.28em] uppercase text-on-surface font-normal leading-none pl-[0.20em] sm:pl-[0.28em]">V I O R A</div>
             </div>
             <div class="hidden md:block flex-1 h-[1px] bg-gradient-to-l from-transparent via-outline-variant/40 to-outline-variant/70"></div>
           </div>
         </div>
-        <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-tight mb-space-xs font-medium" id="greetingHeading">
+        <h1 class="font-headline-xl text-headline-xl sm:text-headline-xl text-on-surface tracking-tight leading-tight mb-space-xs font-medium" id="greetingHeading">
           Good evening. What would you like to explore today?
         </h1>
         <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl text-center leading-relaxed">

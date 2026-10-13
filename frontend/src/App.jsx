@@ -225,7 +225,7 @@ export default function App() {
         aria-hidden="true"
         className="fixed inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden"
       >
-        <span className="font-['Cinzel',serif] font-black text-[18vw] md:text-[230px] lg:text-[290px] tracking-[0.28em] text-[#124332]/[0.085] uppercase select-none leading-none pl-[0.28em] transition-all">
+        <span className="font-['Cinzel',serif] font-black text-[22vw] sm:text-[18vw] md:text-[230px] lg:text-[290px] tracking-[0.20em] sm:tracking-[0.28em] text-[#124332]/[0.085] uppercase select-none leading-none pl-[0.20em] sm:pl-[0.28em] transition-all">
           VIORA
         </span>
       </div>
@@ -241,10 +241,10 @@ export default function App() {
         />
 
         {/* Main Content Viewport with Room for Fixed Header (pt-20) and Composer (pb-56) */}
-        <main className="flex-1 flex flex-col w-full max-w-4xl mx-auto px-4 sm:px-6 pt-20 pb-56">
+        <main className="flex-1 flex flex-col w-full max-w-4xl mx-auto px-3 sm:px-6 pt-16 sm:pt-20 pb-40 sm:pb-56">
           {/* Empty State / Welcome Screen */}
           {messages.length === 0 ? (
-            <div className="flex-1 flex flex-col items-center justify-center min-h-[50vh] gap-4">
+            <div className="flex-1 flex flex-col items-center justify-center min-h-[40vh] sm:min-h-[50vh] gap-3 sm:gap-4">
               <Hero />
               <SuggestedPrompts onSelectPrompt={handleSelectPrompt} />
             </div>
@@ -264,7 +264,7 @@ export default function App() {
       </div>
 
       {/* Docked Input Area with Translucent Glassmorphism */}
-      <div className="fixed bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-[#fbfbfa]/60 via-[#fbfbfa]/30 to-transparent backdrop-blur-[2px] pt-6 pb-3 px-4 sm:px-6">
+      <div className="fixed bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-[#fbfbfa]/60 via-[#fbfbfa]/30 to-transparent backdrop-blur-[2px] pt-4 sm:pt-6 pb-2 sm:pb-3 px-3 sm:px-6 safe-bottom">
         <QueryComposer
           query={query}
           setQuery={setQuery}
